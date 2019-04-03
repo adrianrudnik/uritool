@@ -45,7 +45,7 @@ snapcraft:
     darwin: macOS
     linux: Tux
   publish: true
-  summary: Go based cmd tool for URI parsing/modification.
+  summary: Go based cmd tool for URI escaping, parsing and extraction.
   description: Go based command line tool for URI escaping/encoding, unescaping/decoding and parsing parts of the URI.
   grade: stable
   confinement: strict
