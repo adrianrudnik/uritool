@@ -107,3 +107,24 @@ uritool parse uri --format="Second entry is {{index .Query.things 1}}" "https://
 
 # > Second entry is two
 ```
+
+You can also parse query strings (leading "?" will be removed):
+
+```sh
+uritool parse query "?this=is&this=isnot"
+
+# > {
+# >   "this": [
+# >     "is",
+# >     "isnot"
+# >   ]
+# > }
+```
+
+This is also workable with the [go template](https://golang.org/pkg/text/template/) language:
+
+```sh
+uritool parse query -n --format="{{index .search 0}}" "search=mister&filter=x"
+
+# > mister
+```
