@@ -55,7 +55,7 @@ func doJson(cmd *cobra.Command, data interface{}) error {
 	return nil
 }
 
-var ParseUriCmd = &cobra.Command{
+var parseUriCmd = &cobra.Command{
 	Use:  "uri",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

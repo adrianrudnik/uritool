@@ -12,8 +12,8 @@ var pathCmd = &cobra.Command{
 	},
 }
 
-var pathEncodeCmd = &cobra.Command{
-	Use:  "encode",
+var pathEscapeCmd = &cobra.Command{
+	Use:  "escape",
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		out := url.PathEscape(args[0])
@@ -21,8 +21,8 @@ var pathEncodeCmd = &cobra.Command{
 	},
 }
 
-var pathDecodeCmd = &cobra.Command{
-	Use:  "decode",
+var pathUnescapeCmd = &cobra.Command{
+	Use:  "unescape",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		out, err := url.PathUnescape(args[0])

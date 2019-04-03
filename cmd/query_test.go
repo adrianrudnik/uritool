@@ -20,10 +20,10 @@ func TestQueryHelp(t *testing.T) {
 	}
 }
 
-func TestQueryEncodeHelp(t *testing.T) {
+func TestQueryEscapeHelp(t *testing.T) {
 	setup()
 
-	out, err := cmdtest.ExecuteCommand(rootCmd, "query", "encode")
+	out, err := cmdtest.ExecuteCommand(rootCmd, "query", "escape")
 
 	// throws error, missing arg
 	if err == nil {
@@ -36,10 +36,10 @@ func TestQueryEncodeHelp(t *testing.T) {
 	}
 }
 
-func TestQueryDecodeHelp(t *testing.T) {
+func TestQueryUnescapeHelp(t *testing.T) {
 	setup()
 
-	out, err := cmdtest.ExecuteCommand(rootCmd, "query", "decode")
+	out, err := cmdtest.ExecuteCommand(rootCmd, "query", "unescape")
 
 	// throws error, missing arg
 	if err == nil {
@@ -52,35 +52,35 @@ func TestQueryDecodeHelp(t *testing.T) {
 	}
 }
 
-func TestQueryEncodingWithValidValue(t *testing.T) {
+func TestQueryEscapeWithValidValue(t *testing.T) {
 	setup()
 
 	in := "hello / world%"
 	expected := "hello+%2F+world%25"
-	out, _ := cmdtest.ExecuteCommand(rootCmd, "-n", "query", "encode", in)
+	out, _ := cmdtest.ExecuteCommand(rootCmd, "-n", "query", "escape", in)
 
 	if out != expected {
 		t.Errorf("Expected output is wrong: %s != %s", out, expected)
 	}
 }
 
-func TestQueryDecodingWithValidValue(t *testing.T) {
+func TestQueryUnescapeWithValidValue(t *testing.T) {
 	setup()
 
 	in := "hello+%2F+world%25"
 	expected := "hello / world%"
-	out, _ := cmdtest.ExecuteCommand(rootCmd, "-n", "query", "decode", in)
+	out, _ := cmdtest.ExecuteCommand(rootCmd, "-n", "query", "unescape", in)
 
 	if out != expected {
 		t.Errorf("Expected output is wrong: %s != %s", out, expected)
 	}
 }
 
-func TestQueryDecodingWithInvalidValue(t *testing.T) {
+func TestQueryUnescapeWithInvalidValue(t *testing.T) {
 	setup()
 
 	in := "hello%%2Fworld"
-	out, err := cmdtest.ExecuteCommand(rootCmd, "query", "decode", in)
+	out, err := cmdtest.ExecuteCommand(rootCmd, "query", "unescape", in)
 
 	if err == nil {
 		t.Errorf("Expected error, got %s", out)

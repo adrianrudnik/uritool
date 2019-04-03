@@ -17,28 +17,54 @@ func Execute() {
 }
 
 func setup() {
-	queryCmd.AddCommand(queryEncodeCmd)
-	queryCmd.AddCommand(queryDecodeCmd)
+	// query
+	queryCmd.ResetFlags()
+	queryCmd.ResetCommands()
 
-	pathCmd.AddCommand(pathEncodeCmd)
-	pathCmd.AddCommand(pathDecodeCmd)
+	// query escape
+	queryEscapeCmd.ResetFlags()
+	queryEscapeCmd.ResetCommands()
+	queryCmd.AddCommand(queryEscapeCmd)
+
+	// query unescape
+	queryUnescapeCmd.ResetFlags()
+	queryUnescapeCmd.ResetCommands()
+	queryCmd.AddCommand(queryUnescapeCmd)
+
+	// path
+	pathCmd.ResetFlags()
+	pathCmd.ResetCommands()
+
+	// path escape
+	pathEscapeCmd.ResetFlags()
+	pathEscapeCmd.ResetCommands()
+	pathCmd.AddCommand(pathEscapeCmd)
+
+	pathUnescapeCmd.ResetFlags()
+	pathUnescapeCmd.ResetCommands()
+	pathCmd.AddCommand(pathUnescapeCmd)
+
+	// parse
+	parseCmd.ResetFlags()
+	parseCmd.ResetCommands()
 
 	// parse uri
-	ParseUriCmd.ResetFlags()
-	ParseUriCmd.ResetCommands()
-	ParseUriCmd.Flags().String("format", "", "use go template for formatted output")
+	parseUriCmd.ResetFlags()
+	parseUriCmd.ResetCommands()
+	parseUriCmd.Flags().String("format", "", "use go template for formatted output")
+	parseCmd.AddCommand(parseUriCmd)
 
 	// parse query
 	parseQueryCmd.ResetFlags()
 	parseQueryCmd.ResetCommands()
 	parseQueryCmd.Flags().String("format", "", "use go template for formatted output")
-
 	parseCmd.AddCommand(parseQueryCmd)
-	parseCmd.AddCommand(ParseUriCmd)
 
+	// root
 	rootCmd.ResetFlags()
 	rootCmd.ResetCommands()
 	rootCmd.PersistentFlags().BoolVarP(&NoTrailingNewlineFlag, "no-newline", "n", false, "do not output the trailing newline")
+
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(queryCmd)
 	rootCmd.AddCommand(pathCmd)
