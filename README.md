@@ -9,11 +9,13 @@ small tool to help with uri specific elements while working on a command line.
 Escapes the given first argument to a valid query paramter value:
 
 ```sh
-uirtool query encode --no-newline "hello / world!%%%"
+uritool query encode --no-newline "hello / world!%%%"
+# > hello+%2F+world%25%25
 ```
 
 Unescapes the given first argument to the original value:
 
 ```sh
-uirtool query decode "hello+%2F+world%25%25"
+uritool query decode "hello+%2F+world%25%25"
+# > hello / world!%%%
 ```

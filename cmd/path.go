@@ -5,27 +5,27 @@ import (
 	"net/url"
 )
 
-var queryCmd = &cobra.Command{
-	Use: "query",
+var pathCmd = &cobra.Command{
+	Use: "path",
 	Run: func(cmd *cobra.Command, args []string) {
 		_ = cmd.Help()
 	},
 }
 
-var queryEncodeCmd = &cobra.Command{
+var pathEncodeCmd = &cobra.Command{
 	Use:  "encode",
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		out := url.QueryEscape(args[0])
+		out := url.PathEscape(args[0])
 		output(cmd, out)
 	},
 }
 
-var queryDecodeCmd = &cobra.Command{
+var pathDecodeCmd = &cobra.Command{
 	Use:  "decode",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		out, err := url.QueryUnescape(args[0])
+		out, err := url.PathUnescape(args[0])
 
 		if err != nil {
 			return err
