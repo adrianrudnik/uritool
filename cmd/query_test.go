@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/adrianrudnik/cmd-uritools/cmd/cmdtest"
+	"github.com/adrianrudnik/uritool/cmd/cmdtest"
 	"strings"
 	"testing"
 )

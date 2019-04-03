@@ -1,6 +1,3 @@
-# github.com/adrianrudnik/cmd-uritools v1.0.0
-github.com/adrianrudnik/cmd-uritools/cmd
-github.com/adrianrudnik/cmd-uritools/cmd/cmdtest
 # github.com/inconshreveable/mousetrap v1.0.0
 github.com/inconshreveable/mousetrap
 # github.com/spf13/cobra v0.0.3
