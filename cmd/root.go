@@ -85,7 +85,7 @@ func output(cmd *cobra.Command, val string) {
 
 var rootCmd = &cobra.Command{
 	Use:   "uritool",
-	Short: "uritool is a helper command to process uris on the command line",
+	Short: "process uris and extract information",
 	Run: func(cmd *cobra.Command, args []string) {
 		_ = cmd.Help()
 	},
@@ -95,6 +95,6 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "prints the current version",
 	Run: func(cmd *cobra.Command, args []string) {
-		output(cmd, "1.0.0")
+		output(cmd, Version)
 	},
 }

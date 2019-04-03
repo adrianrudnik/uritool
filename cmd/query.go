@@ -7,6 +7,7 @@ import (
 
 var queryCmd = &cobra.Command{
 	Use: "query",
+	Short: "collection of commands to modify query related information",
 	Run: func(cmd *cobra.Command, args []string) {
 		_ = cmd.Help()
 	},

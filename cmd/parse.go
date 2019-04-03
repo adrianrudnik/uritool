@@ -10,6 +10,7 @@ import (
 
 var parseCmd = &cobra.Command{
 	Use: "parse",
+	Short: "collection of commands that allow to parse and extract information",
 	Run: func(cmd *cobra.Command, args []string) {
 		_ = cmd.Help()
 	},
@@ -57,6 +58,7 @@ func doJson(cmd *cobra.Command, data interface{}) error {
 
 var parseUriCmd = &cobra.Command{
 	Use:  "uri",
+	Short: "parses the given uri into single parts and returns them as json or formatted template",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		parsed, err := url.Parse(args[0])
@@ -87,6 +89,7 @@ var parseUriCmd = &cobra.Command{
 
 var parseQueryCmd = &cobra.Command{
 	Use:  "query",
+	Short: "parses the given query string and returns them as json or formatted template",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		_, err := url.ParseQuery(args[0])
