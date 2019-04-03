@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/cobra"
 	"html/template"
 	"net/url"
+	"strings"
 )
 
 var parseCmd = &cobra.Command{
@@ -92,13 +93,28 @@ var parseQueryCmd = &cobra.Command{
 	Short: "parses the given query string and returns them as json or formatted template",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		_, err := url.ParseQuery(args[0])
+		// remove leading question mark
+		in := strings.TrimLeft(args[0], "?")
+
+		parsed, err := url.ParseQuery(in)
 
 		if err != nil {
 			return err
 		}
 
-		// @todo output(cmd, out)
+		done, err := doFormat(cmd, parsed)
+
+		if err != nil {
+			return err
+		}
+
+		if done {
+			return nil
+		}
+
+		if err := doJson(cmd, parsed); err != nil {
+			return err
+		}
 
 		return nil
 	},

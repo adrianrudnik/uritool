@@ -3,6 +3,7 @@ package cmd
 import (
 	"encoding/json"
 	"github.com/adrianrudnik/uritool/cmd/cmdtest"
+	"net/url"
 	"strings"
 	"testing"
 )
@@ -254,7 +255,7 @@ func TestParseValidUriWithFormat(t *testing.T) {
 	}
 }
 
-func TestParseStringWithFormat(t *testing.T) {
+func TestParseValidUriStringWithFormat(t *testing.T) {
 	setup()
 
 	in := "http://www.example.com/"
@@ -263,5 +264,57 @@ func TestParseStringWithFormat(t *testing.T) {
 
 	if out != expected {
 		t.Errorf("Expected format is wrong: %s != %s", out, expected)
+	}
+}
+
+func TestParseValidQuery(t *testing.T) {
+	setup()
+
+	in := "this=is&this=isnot"
+	out, _ := cmdtest.ExecuteCommand(rootCmd, "-n", "parse", "query", in)
+
+	var result url.Values
+	err := json.Unmarshal([]byte(out), &result)
+
+	if err != nil {
+		t.Errorf("Could not validate JSON: %s", err)
+	}
+
+	if len(result.Get("this")) != 2 {
+		t.Errorf("Expected query parameter count is wrong: %d != %d", len(result.Get("this")), 1)
+	}
+
+	if result["this"][0] != "is" {
+		t.Errorf("Expected query parameter array element 0 is wrong: %s != %s", result["this"][0], "is")
+	}
+
+	if result["this"][1] != "isnot" {
+		t.Errorf("Expected query parameter array element 0 is wrong: %s != %s", result["this"][1], "isnot")
+	}
+}
+
+func TestParseValidQueryWithLeadingQuestionMark(t *testing.T) {
+	setup()
+
+	in := "?this=is&this=isnot"
+	out, _ := cmdtest.ExecuteCommand(rootCmd, "-n", "parse", "query", in)
+
+	var result url.Values
+	err := json.Unmarshal([]byte(out), &result)
+
+	if err != nil {
+		t.Errorf("Could not validate JSON: %s", err)
+	}
+
+	if len(result.Get("this")) != 2 {
+		t.Errorf("Expected query parameter count is wrong: %d != %d", len(result.Get("this")), 1)
+	}
+
+	if result["this"][0] != "is" {
+		t.Errorf("Expected query parameter array element 0 is wrong: %s != %s", result["this"][0], "is")
+	}
+
+	if result["this"][1] != "isnot" {
+		t.Errorf("Expected query parameter array element 0 is wrong: %s != %s", result["this"][1], "isnot")
 	}
 }
