@@ -2,6 +2,33 @@
 
 Tool that helps working with URIs on the command line, processing parts or preparing information.
 
+## Installation
+
+The following methods are available:
+
+### Download
+
+Directly download a version from the [release page](https://github.com/adrianrudnik/uritool/releases)
+
+### Snap
+
+Install it on any system supporting snaps:
+
+```sh
+snap install uritool
+```
+
+### Build yourself
+
+Download the source code, review it and build it:
+
+```sh
+go test ./...
+go build -mod=vendor .
+```
+
+This should build a local binary for your system with the name `uritool` in your current working directory.
+
 ## Usage
 
 ### Query commands
