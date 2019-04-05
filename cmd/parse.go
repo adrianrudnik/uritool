@@ -80,11 +80,7 @@ var parseUriCmd = &cobra.Command{
 			return nil
 		}
 
-		if err := doJson(cmd, wrapped); err != nil {
-			return err
-		}
-
-		return nil
+		return doJson(cmd, wrapped)
 	},
 }
 
@@ -112,10 +108,6 @@ var parseQueryCmd = &cobra.Command{
 			return nil
 		}
 
-		if err := doJson(cmd, parsed); err != nil {
-			return err
-		}
-
-		return nil
+		return doJson(cmd, parsed)
 	},
 }
