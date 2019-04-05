@@ -2,6 +2,10 @@
 
 Tool that helps working with URIs on the command line, processing parts or preparing information.
 
+[![license](https://img.shields.io/github/license/adrianrudnik/uritool.svg)](https://lab.klonmaschine.de/adrian.rudnik/uritool/blob/develop/LICENSE)
+[![pipeline status](https://lab.klonmaschine.de/adrian.rudnik/uritool/badges/develop/pipeline.svg)](https://lab.klonmaschine.de/adrian.rudnik/uritool/commits/develop)
+[![coverage report](https://lab.klonmaschine.de/adrian.rudnik/uritool/badges/develop/coverage.svg)](https://lab.klonmaschine.de/adrian.rudnik/uritool/commits/develop)
+
 ## Installation
 
 The following methods are available:
