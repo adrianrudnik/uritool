@@ -10,6 +10,8 @@ var Version = "1.0.0"
 var NoTrailingNewlineFlag bool
 
 func Execute() {
+	rootCmd.SetOutput(os.Stdout)
+
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -77,6 +79,7 @@ func init() {
 
 func output(cmd *cobra.Command, val string) {
 	if !NoTrailingNewlineFlag {
+		cmd.OutOrStdout()
 		cmd.Println(val)
 	} else {
 		cmd.Printf("%s", val)
