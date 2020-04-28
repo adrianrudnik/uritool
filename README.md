@@ -1,6 +1,6 @@
 # uritool
 
-Tool that helps working with URIs on the command line, processing parts or preparing information.
+Command-line tool that helps with URI/URL handling and proper part extraction, escaping and parsing.  
 
 [![license](https://img.shields.io/github/license/adrianrudnik/uritool.svg)](https://lab.klonmaschine.de/adrian.rudnik/uritool/blob/develop/LICENSE)
 [![pipeline status](https://lab.klonmaschine.de/adrian.rudnik/uritool/badges/develop/pipeline.svg)](https://lab.klonmaschine.de/adrian.rudnik/uritool/commits/develop)
@@ -13,7 +13,7 @@ The following methods are available:
 
 ### Download
 
-Directly download a version from the [release page](https://github.com/adrianrudnik/uritool/releases)
+Directly download a version from the [release page](https://github.com/adrianrudnik/uritool/releases).
 
 ### Snap
 
@@ -59,7 +59,7 @@ uritool query unescape "hello+%2F+world%25%25"
 Escape the given value to a valid escaped path value:
 
 ```sh
-uritool path encode "hello world"
+uritool path escape "hello world"
 
 # > hello%20world
 ``` 
@@ -67,7 +67,7 @@ uritool path encode "hello world"
 Unescape the given escaped path value:
 
 ```sh
-uritool path decode "hello%20world"
+uritool path unescape "hello%20world"
 
 # > hello world
 ``` 
